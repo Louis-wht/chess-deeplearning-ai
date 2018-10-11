@@ -20,7 +20,7 @@ public class FromHardDriveNNLoader implements NNLoader {
             mlc = readNetworkFromHD();
 
         else
-            mlc = new UnpersistableNNLoader().readNetwork();
+            mlc = new UnpersistableNNLoader(trainer).readNetwork();
 
         return mlc;
     }

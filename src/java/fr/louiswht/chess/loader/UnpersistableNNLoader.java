@@ -2,6 +2,7 @@ package fr.louiswht.chess.loader;
 
 import fr.louiswht.chess.ex.NNPersistenceException;
 import fr.louiswht.chess.ex.NNReadingException;
+import fr.louiswht.chess.loader.train.DefaultNNTrainer;
 import org.deeplearning4j.nn.api.OptimizationAlgorithm;
 import org.deeplearning4j.nn.conf.MultiLayerConfiguration;
 import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
@@ -16,6 +17,15 @@ import org.nd4j.linalg.lossfunctions.LossFunctions;
 
 public class UnpersistableNNLoader implements NNLoader {
 
+    private final DefaultNNTrainer trainer;
+
+    public UnpersistableNNLoader() {
+        this(new DefaultNNTrainer());
+    }
+
+    public UnpersistableNNLoader(@NotNull final DefaultNNTrainer trainer) {
+        this.trainer = trainer;
+    }
 
     public void saveNetwork(@NotNull final MultiLayerNetwork mlc) throws NNPersistenceException {
         // Does nothing because this NN loader will create a new
@@ -25,7 +35,7 @@ public class UnpersistableNNLoader implements NNLoader {
     public MultiLayerNetwork readNetwork() throws NNReadingException {
         MultiLayerNetwork mlc = new MultiLayerNetwork( initNnConf() );
 
-        trainMlc(mlc);
+        trainer.train(mlc);
 
         return mlc;
     }
@@ -63,9 +73,4 @@ public class UnpersistableNNLoader implements NNLoader {
                 .build();
     }
 
-
-    private void trainMlc(MultiLayerNetwork mlc) {
-        // TODO
-        // Yet does nothing
-    }
 }

@@ -5,7 +5,7 @@ import fr.louiswht.chess.loader.NNLoader;
 import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.jetbrains.annotations.NotNull;
 
-public class DefaultChessAI {
+public class DefaultChessAI implements ChessAI {
 
 
     private final MultiLayerNetwork mlc;
