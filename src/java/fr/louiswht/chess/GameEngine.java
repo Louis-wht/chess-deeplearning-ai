@@ -1,5 +1,6 @@
 package fr.louiswht.chess;
 
+import fr.louiswht.chess.loader.UnpersistableNNLoader;
 import org.deeplearning4j.nn.api.OptimizationAlgorithm;
 import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
 import org.deeplearning4j.nn.conf.layers.DenseLayer;
@@ -13,7 +14,7 @@ public class GameEngine {
 
     public static void main(String[] args) {
 
-
+        DefaultChessAI chessAI = new DefaultChessAI(new UnpersistableNNLoader());
 
     }
 }
