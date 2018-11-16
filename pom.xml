@@ -35,7 +35,7 @@
             <artifactId>chess-engine</artifactId>
             <version>1.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/chess-engine.jar</systemPath>
+            <systemPath>src/chess-engine.jar</systemPath>
         </dependency>
 
 
